@@ -55,16 +55,17 @@ for row in data_list[1:21]:
 input("Press Enter to continue...")
 # TASK 3
 # TODO: Create a function to add the columns(features) of a list in another list in the same order
-"""
-Receive a list and returns a list containing the data on column indexed by parameter.
 
-Args:
-data: chicago.csv dataset
-index: column index 
-Returns: List of values in column specified by index
-
-"""
 def column_to_list(data, index):
+    """
+    Receive a list and returns a list containing the data on column indexed by parameter.
+
+    Args:
+    data: chicago.csv dataset
+    index: column index 
+    Returns: List of values in column specified by index
+
+    """
    
     column_list = []
     for x in data:
@@ -111,14 +112,15 @@ input("Press Enter to continue...")
 # TASK 5
 # TODO: Create a function to count the genders. Return a list
 # Should return a list with [count_male, counf_female] (e.g., [10, 15] means 10 Males, 15 Females)
-"""
-Receive a list and returns a list of two positions containing in first position the quantity of tuples with info of males and the second the quantity of tuples with info of females.
-Args:
-data_list: chicago.csv dataset
-Returns: A list with [count_male, counf_female] (e.g., [10, 15] means 10 Males, 15 Females)
 
-"""
 def count_gender(data_list):
+        """
+        Receive a list and returns a list of two positions containing in first position the quantity of tuples with info of males and the second the quantity of tuples with info of females.
+        Args:
+        data_list: chicago.csv dataset
+        Returns: A list with [count_male, counf_female] (e.g., [10, 15] means 10 Males, 15 Females)
+
+        """
 
         cmale = 0
         cfemale = 0
@@ -143,14 +145,15 @@ input("Press Enter to continue...")
 # TASK 6
 # TODO: Create a function to get the most popular gender and print the gender as string.
 # We expect to see "Male", "Female" or "Equal" as answer.
-"""
-Receive a list and returns the most popular gender.
-Args:
-data_list: chicago.csv dataset
-Returns: The most popular gender
 
-"""
 def most_popular_gender(data_list):
+    """
+    Receive a list and returns the most popular gender.
+    Args:
+    data_list: chicago.csv dataset
+    Returns: The most popular gender
+
+    """
 
     if count_gender(data_list)[0] == count_gender(data_list)[1]:
        return "Equal"                                 
@@ -220,16 +223,18 @@ input("Press Enter to continue...")
 # TODO: Find the Minimum, Maximum, Mean and Median trip duration.
 # You should not use ready functions to do that, like max() or min().
 trip_duration_list = [float(x) for x in column_to_list(data_list, 2)] 
-"""
-The column data(trip_duration_list) was converted to Float because the data was in string format.
-Receive a list of the trip durations and it's used a mergesort algorithm to order the list, finally is set the position of the minor and bigger duration from list and is
-made a loop to know the quantity of elements from list and get the mean and median.
-Args:
-trip_duration_list: It's a column where are the trip duration. 
-Returns: Min and Max were setted the position after ordered and mean and median was made a loop to know the quantity of elements from list and get the mean and median.
 
-"""
 def mergeSort(trip_duration_list):
+    """
+    The column data(trip_duration_list) was converted to Float because the data was in string format.
+    Receive a list of the trip durations and it's used a mergesort algorithm to order the list, finally is set the position of the minor and bigger duration from list and is
+    made a loop to know the quantity of elements from list and get the mean and median.
+    Args:
+    trip_duration_list: It's a column where are the trip duration. 
+    Returns: Min and Max were setted the position after ordered and mean and median was made a loop to know the quantity of elements from list and get the mean and median.
+
+    """    
+
     if len(trip_duration_list)>1:
         mid = len(trip_duration_list)//2
         left = trip_duration_list[:mid]
@@ -268,6 +273,9 @@ for i in trip_duration_list:
     values += i
 mean_trip = values/len(trip_duration_list)
 median_trip = trip_duration_list[int(len(trip_duration_list)/2)]    
+if len(trip_duration_list) % 2 == 0:
+        median_trip = (trip_duration_list[int(len(trip_duration_list)/2)] + trip_duration_list[int(len(trip_duration_list)/2) + 1])/2
+        
 
 print("\nTASK 9: Printing the min, max, mean and median")
 print("Min: ", min_trip, "Max: ", max_trip, "Mean: ", mean_trip, "Median: ", median_trip)
